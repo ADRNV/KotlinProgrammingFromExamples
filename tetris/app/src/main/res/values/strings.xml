@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TETRIS</string>
     <string name="title">TETRIS</string>
-    <string name="high_score">High score</string>
+    <string name="high_score">High score %1$d</string>
     <string name="new_game">New game</string>
     <string name="reset_score">Reset score</string>
     <string name="exit">Exit</string>

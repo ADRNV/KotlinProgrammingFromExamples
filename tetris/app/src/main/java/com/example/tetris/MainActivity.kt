@@ -7,10 +7,13 @@ import android.view.View
 import com.example.tetris.databinding.ActivityMainBinding
 import com.example.tetris.storage.AppPreferences
 import com.google.android.material.snackbar.Snackbar
+
 //TODO Rebase to fragments
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var preferences:AppPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         actionBar?.hide()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        preferences = AppPreferences(this)
+
+        binding.tvHighScore.text = getString(R.string.high_score, preferences.getHighScore())
 
         binding.btnNewGame.setOnClickListener{
             onBtnNewGameClick()
