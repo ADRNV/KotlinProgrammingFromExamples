@@ -65,12 +65,12 @@ enum class Shape(val frameCount:Int, val startPosition:Int) {
 
                 2 -> Frame(4)
                     .addRow("100")
-                    .addRow("111")
+                    .addRow("110")
                     .addRow("100")
 
                 3 -> Frame(4)
                     .addRow("001")
-                    .addRow("111")
+                    .addRow("011")
                     .addRow("001")
 
                 else -> throw IllegalArgumentException("$frameNumber is invalid")
@@ -78,7 +78,7 @@ enum class Shape(val frameCount:Int, val startPosition:Int) {
         }
     },
 
-    TerominoL(2, 1){
+    TerominoL(4, 1){
 
         override fun getFrame(frameNumber: Int): Frame {
 
@@ -87,19 +87,21 @@ enum class Shape(val frameCount:Int, val startPosition:Int) {
                 0 -> Frame(2)
                     .addRow("10")
                     .addRow("10")
+                    .addRow("10")
                     .addRow("11")
 
                 1 -> Frame(2)
                     .addRow("11")
                     .addRow("01")
                     .addRow("01")
+                    .addRow("01")
 
                 2 -> Frame(4)
-                    .addRow("111")
-                    .addRow("001")
+                    .addRow("1111")
+                    .addRow("0001")
 
                 3 -> Frame(4)
-                    .addRow("1000")
+                    .addRow("100")
                     .addRow("1111")
                 else -> throw IllegalArgumentException("$frameNumber is invalid")
             }
@@ -118,8 +120,8 @@ enum class Shape(val frameCount:Int, val startPosition:Int) {
 
                 1 -> Frame(2)
                     .addRow("11")
-                    .addRow("1")
-                    .addRow("1")
+                    .addRow("10")
+                    .addRow("10")
 
                 2 -> Frame(3)
                     .addRow("111")
