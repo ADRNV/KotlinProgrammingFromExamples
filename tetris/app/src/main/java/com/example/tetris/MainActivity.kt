@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         preferences = AppPreferences(this)
 
-        binding.tvHighScore.text = getString(R.string.high_score, preferences.getHighScore())
+        binding.tvHighScore.text = getString(R.string.high_score_formatted, preferences.getHighScore())
 
         binding.btnNewGame.setOnClickListener{
             onBtnNewGameClick()
