@@ -10,9 +10,9 @@ import android.widget.Toast
 import com.example.tetris.GameActivity
 import com.example.tetris.R
 import com.example.tetris.domain.game.AppModel
-import com.example.tetris.domain.game.models.Block
 import com.example.tetris.domain.game.constants.CellsStatuses
 import com.example.tetris.domain.game.constants.FieldConstants
+import com.example.tetris.domain.game.models.Block
 
 class TetrisView: View {
 

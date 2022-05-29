@@ -1,9 +1,9 @@
 package com.example.tetris.domain.game
 
 import android.graphics.Point
-import com.example.tetris.domain.game.models.Block
 import com.example.tetris.domain.game.constants.CellsStatuses
 import com.example.tetris.domain.game.constants.FieldConstants
+import com.example.tetris.domain.game.models.Block
 import com.example.tetris.storage.AppPreferences
 
 class AppModel {

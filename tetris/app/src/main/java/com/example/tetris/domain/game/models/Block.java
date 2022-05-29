@@ -122,7 +122,7 @@ public class Block {
 
     /***
      *Colors for tetromino-block
-    */
+     */
     public enum BlockColor{
         PINK(Color.rgb(255, 105, 180),(byte)2),
 
@@ -143,3 +143,4 @@ public class Block {
         private final byte _byteValue;
     }
 }
+
