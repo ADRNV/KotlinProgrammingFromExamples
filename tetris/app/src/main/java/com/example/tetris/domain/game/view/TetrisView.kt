@@ -7,12 +7,12 @@ import android.os.Message
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
-import com.example.tetris.GameActivity
 import com.example.tetris.R
 import com.example.tetris.domain.game.AppModel
 import com.example.tetris.domain.game.constants.CellsStatuses
 import com.example.tetris.domain.game.constants.FieldConstants
 import com.example.tetris.domain.game.models.Block
+import kotlin.properties.Delegates
 
 class TetrisView: View {
 
@@ -26,9 +26,16 @@ class TetrisView: View {
 
     private var _model: AppModel? = null
 
-    private var _activity:GameActivity? = null
+    private var _viewContext:Context? = null
 
     private val _viewHandler = ViewHandler(this)
+
+    private lateinit var _scoreChanged:(score:Int) -> Unit
+
+    private  var _score:Int by Delegates.observable(0){
+        _, oldScore, newScore ->
+        _scoreChanged.invoke(newScore)
+    }
 
     private var _cellSize:Dimension = Dimension(0, 0)
 
@@ -40,11 +47,20 @@ class TetrisView: View {
         _model = value
     }
 
-    var activity
-    get() = _activity
-    set(value)
-    {
-        _activity = value
+    var viewContext
+    get() = _viewContext
+    set(value) {
+        _viewContext = value
+    }
+
+    var score
+    get() = _score
+    private set(value) {
+        _score = value
+    }
+
+    fun setOnScoreChangedListener(handler:(score: Int) -> Unit){
+        _scoreChanged = handler
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -164,11 +180,7 @@ class TetrisView: View {
     }
 
     private fun updateScores(){
-
-        activity?.binding?.tvCurrentScore?.text = "${_model?.score}"
-
-        activity?.binding?.tvHighScore?.text = "${activity?.appPreferences?.getHighScore()}"
-
+        score = model?.score!!
     }
 
     companion object {
@@ -192,7 +204,7 @@ class TetrisView: View {
 
                         owner.model?.endGame()
 
-                        Toast.makeText(owner.activity, R.string.game_over, Toast.LENGTH_LONG)
+                        Toast.makeText(owner.viewContext, R.string.game_over, Toast.LENGTH_LONG)
                             .show()
                     }
 

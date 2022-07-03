@@ -50,7 +50,7 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun onBtnNewGameClick(){
-        //Navigation to GameFragment.kt
+
     }
 
     private fun onBtnClickResetScore(view: View){
