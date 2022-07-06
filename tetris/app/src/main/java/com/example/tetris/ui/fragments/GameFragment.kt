@@ -18,10 +18,6 @@ class GameFragment : Fragment() {
 
     private val _appModel: AppModel = AppModel()
 
-    val appPreferences
-        get() = _appPreferences
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +36,8 @@ class GameFragment : Fragment() {
         binding.tetrisView.viewContext = context
 
         binding.tetrisView.setOnTouchListener(this::onTetrisViewTouch)
+
+        updateCurrentScore(0)
 
         binding.tetrisView.setOnScoreChangedListener {
             updateCurrentScore(it)
@@ -110,6 +108,7 @@ class GameFragment : Fragment() {
     private fun onBtnRestartClick(){
 
         _appModel.restartGame()
+        updateCurrentScore(0)
 
     }
 
@@ -124,7 +123,7 @@ class GameFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             GameFragment().apply {
                 arguments = Bundle()
             }

@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.tetris.R
 import com.example.tetris.databinding.FragmentMainMenuBinding
 import com.example.tetris.storage.AppPreferences
@@ -49,7 +53,19 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun onBtnNewGameClick(){
+        findNavController()
+            .navigate(R.id.action_mainMenuFragment_to_gameFragment,
 
+                null,
+
+                navOptions{
+                anim {
+                    enter = androidx.navigation.ui.R.anim.nav_default_enter_anim
+                    exit = androidx.navigation.ui.R.anim.nav_default_exit_anim
+                    popEnter = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim
+                    popExit = androidx.navigation.ui.R.anim.nav_default_exit_anim
+                }
+            })
     }
 
     private fun onBtnClickResetScore(view: View){
